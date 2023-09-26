@@ -1,3 +1,12 @@
+/*
+{
+    "CreatedBy": "John Lewis",
+    "CreatedOn": "2023-09-26",
+    "Version": "1.0.0",
+    "Purpose": "ARM template to deploy Application Insights and configure its properties.",
+    "Dependencies": ["appInsightsTemplate.json", "Add-AzureRBAC.ps1"]
+}
+*/
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
