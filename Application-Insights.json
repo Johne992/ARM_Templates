@@ -1,0 +1,42 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+        {
+            "type": "microsoft.insights/components",
+            "apiVersion": "2020-02-02-preview",
+            "name": "[parameters('appInsightsName')]",
+            "location": "[parameters('location')]",
+            "kind": "web",
+            "properties": {
+                "Application_Type": "web",
+                "WorkspaceResourceId": "[parameters('logAnalyticsWs')]"
+            },
+            "tags": {
+                "CreatedBy": "[parameters('createdBy')]",
+                "CreatedDate": "[parameters('currentDate')]",
+                "CostCenter": "[parameters('costCenter')]"
+            }
+        }
+    ],
+    "parameters": {
+        "appInsightsName": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        "logAnalyticsWs": {
+            "type": "string"
+        },
+        "createdBy": {
+            "type": "string"
+        },
+        "currentDate": {
+            "type": "string"
+        },
+        "costCenter": {
+            "type": "string"
+        }
+    }
+}
