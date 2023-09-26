@@ -15,7 +15,11 @@
             "tags": {
                 "CreatedBy": "[parameters('createdBy')]",
                 "CreatedDate": "[parameters('currentDate')]",
-                "CostCenter": "[parameters('costCenter')]"
+                "CostCenter": "[parameters('costCenter')]",
+                "SNOWTag": "[parameters('SNOWTag')]",
+                "NS_Location": "[parameters('loctag')]",
+                "NS_Environment": "[parameters('envtag')]",
+                "NS_Application": "[parameters('apptag')]"
             }
         }
     ],
@@ -36,6 +40,18 @@
             "type": "string"
         },
         "costCenter": {
+            "type": "string"
+        },
+        "SNOWtag": {
+            "type": "string"
+        },
+        "loctag": {
+            "type": "string"
+        },
+        "envtag": {
+            "type": "string"
+        },
+        "apptag": {
             "type": "string"
         }
     }
