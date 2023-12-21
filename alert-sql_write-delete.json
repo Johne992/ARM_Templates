@@ -1,0 +1,63 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "alertName": {
+            "defaultValue": "vnetupdate",
+            "type": "String"
+        },
+        "actionGroupId": {
+            "defaultValue": "",
+            "type": "String"
+        },
+        "subscriptionId": {
+            "defaultValue": "",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Insights/activityLogAlerts",
+            "apiVersion": "2020-10-01",
+            "name": "[parameters('alertName')]",
+            "location": "global",
+            "tags": {
+                
+            },
+            "properties": {
+                "scopes": [
+                    "[concat('/subscriptions/', parameters('subscriptionId'))]"
+                ],
+                "condition": {
+                    "allOf": [
+                        {
+                            "containsAny": null,
+                            "field": "category",
+                            "equals": "Administrative",
+                            "odata.type": null
+                        },
+                        {
+                            "containsAny": null,
+                            "field": "operatioName",
+                            "equals": "Microsoft.Sql/servers/firewallRules/write",
+                            "odata.type": null
+                        }
+
+                    ],
+                    "odata.type": null
+                },
+                "actions": {
+                    "actionGroups": [
+                        {
+                            "actionGroupId": "[parameters('actionGroupId')]",
+                            "webhookProperties": {}
+                        }
+                    ]
+                },
+                "enabled": true,
+                "description": ""
+            }
+        }
+    ]
+}
